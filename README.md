@@ -5,7 +5,7 @@
 This API provides endpoints to manage entities. It allows you to perform CRUD operations on entities such as creating, reading, updating, and deleting.
 
 ## Deployment link
-[Link text](https://addressbookweb20240303145342.azurewebsites.net/)
+[https://addressbookweb20240303145342.azurewebsites.net/](https://addressbookweb20240303145342.azurewebsites.net/)
 
 ## Endpoints
 
@@ -77,7 +77,7 @@ This API provides endpoints to manage entities. It allows you to perform CRUD op
 ## Database Implementation
 
 For the database, an in-memory dictionary approach is used. The database's actual implementation deviates slightly from the provided template.
-  ```json
+  ```
 public static class MockDatabase
 {
     private static Dictionary<string, Entity> _entities = new Dictionary<string, Entity>();
@@ -153,7 +153,7 @@ The `CreateEntityWithRetry` method in the `MockDatabase` class attempts to creat
 
 -   **Retry Mechanism**: The method iterates through a maximum of three attempts to create the entity in the database.
 -   **Backoff Strategy**: It employs an exponential backoff strategy, increasing the delay between retry attempts. The delay is calculated as follows:
-```json
+```
 private static TimeSpan CalculateBackoffDelay(TimeSpan initialDelay, TimeSpan maxDelay, double multiplier, int attempt)
 {
     // Calculate delay using exponential backoff strategy
@@ -166,7 +166,7 @@ private static TimeSpan CalculateBackoffDelay(TimeSpan initialDelay, TimeSpan ma
 -   **Result**: It returns an `OkResult` if the entity is successfully created, or a `BadRequestObjectResult` if the maximum retry attempts are exhausted or if the entity already exists in the database.
 
 #### Code Snippet for Create Entity with Retry:
-```json
+```
 public static IActionResult CreateEntityWithRetry(Entity entity, int permissibleAttempts)
 {
     int maxAttempts = 3; // Maximum number of retry attempts
@@ -222,3 +222,5 @@ Implemented test cases to simulate various scenarios:
 ### Logging Details
 
 Serilog is used for logging to both console and file. Logging includes details such as the number of attempts, the delay before each attempt, and the ultimate success or failure of the operation.
+
+![Screenshot 2024-03-03 165309](https://github.com/ayush-raj13/ASP.NET-Core-Web-Api/assets/113297899/964fc6c7-0ed7-439c-9b50-6a5b70b35a28)
